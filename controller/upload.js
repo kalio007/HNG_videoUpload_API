@@ -1,4 +1,4 @@
-const upload = require('../middleware/multer');
+// const upload = require('../middleware/multer');
 const cloudinary = require('../utils/cloudinary');
 
 const accept = async (req, res) => {
@@ -20,7 +20,8 @@ const accept = async (req, res) => {
         // console.error(error);
         return res.status(500).json({
             success: false,
-            message: "Error"
+            message: `Error: ${error.message}`,
+            // console.log(error)
         })
     }
 }
@@ -41,9 +42,9 @@ const getVideo = async (req, res) => {
             data: result,
         });
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         return res.status(500).json({
-            message: "internal error",
+            message: `Error: ${error.message}`,
             data: null
         })
     }
